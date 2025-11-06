@@ -26,4 +26,4 @@ jobs:
           yarn set version 4.2.2
       - name: Install Dependencies
         run: |
-          yarn install --frozen-lockfile
+          yarn install --inmutable
