@@ -10,6 +10,6 @@ jobs:
     steps:
       
       - name: Install Dependencies
-        run: ./.github/workflows/install-deps.yml
+        uses: ./.github/workflows/install-deps.yml
       - name: Build
         run: yarn build
