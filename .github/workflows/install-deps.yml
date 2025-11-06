@@ -27,8 +27,12 @@ jobs:
       - run: |
           yarn set version 4.2.2
       - name: Install Dependencies
-        run: |
+        run:
           yarn install
+      - name: List Node Modules
+        run: |
           ls node_modules
+          yarn --version
+          yarn list --depth=0
       
     
