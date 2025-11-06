@@ -15,7 +15,5 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: Build
         run: yarn build
