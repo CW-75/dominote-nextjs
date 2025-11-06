@@ -19,10 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - uses: ./.github/actions/install-deps.yml
-        with:
-          node-version: 20
-          yarn-version: 4.2.2
+      - run: ./.github/actions/install-deps.yml
       - name: Build
       
         run: |
