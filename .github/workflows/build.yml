@@ -9,7 +9,8 @@ jobs:
       NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       
+      - uses: actions/checkout@v4
       - name: Install Dependencies
-        uses: ./.github/actions/install-deps.yml
+        uses: ./.github/workflows/install-deps.yml
       - name: Build
         run: yarn build
