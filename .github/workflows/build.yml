@@ -3,7 +3,10 @@ name: Typescript-build
 on: [push, pull_request]
 
 jobs:
+  install-deps:
+    uses: ./.github/workflows/install-deps.yml
   build:
+    needs: install-deps
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -11,10 +14,8 @@ jobs:
     name: Node ${{ matrix.node }}
     env:
       NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: ./.github/workflows/install-deps.yml
-      - name: Build App
+      - name: Build
         run: yarn build
