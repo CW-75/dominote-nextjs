@@ -4,7 +4,15 @@ on: [push, pull_request]
 
 jobs:
   install-deps:
-    uses: ./.github/workflows/install-deps.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        uses: ./.github/workflows/install-deps.yml
+      - name: Upload node_modules
+        uses: actions/upload-artifact@v4
+        with:
+          name: upload-node-modules
+          path: node_modules
 
   build:
     needs: install-deps
