@@ -12,6 +12,8 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Install Dependencies
         uses: ./.github/workflows/install-deps.yml
       - name: Build
