@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: ./.github/workflows/install-deps.yml@install-deps
+      - run: ./.github/workflows/install-deps.yml
       - name: download node_modules
         uses: actions/download-artifact@v4
         with:
