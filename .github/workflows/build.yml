@@ -3,10 +3,10 @@ name: Typescript-build
 on: [push, pull_request]
 
 jobs:
-  # install-deps:
-  #   uses: ./.github/workflows/install-deps.yml
+  install-deps:
+    uses: decentralfi/thordex-sdk/.github/workflows/install-deps.yml@{{ github.ref }}
   build:
-    # needs: install-deps
+    needs: install-deps
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: ./.github/actions/install-deps.yml
+      
       - name: Build
       
         run: |
