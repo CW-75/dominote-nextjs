@@ -1,0 +1,20 @@
+name: Typescript-build
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    name: Node ${{ matrix.node }}
+    env:
+      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: ./.github/workflows/install-deps.yml
+      - name: Build App
+        run: yarn build
