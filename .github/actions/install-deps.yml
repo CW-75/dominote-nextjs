@@ -1,0 +1,26 @@
+name: Install Dependencies
+description: 'This workflow installs dependencies using Yarn'
+inputs:
+  node-version:
+    description: 'Node.js version to use'
+    required: true
+    default: '20'
+  yarn-version:
+    description: 'Yarn version to use'
+    required: true
+    default: '4.2.2'
+runs:
+  using: 'composite'
+  steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          corepack enable
+      - run: |
+          yarn set version 4.2.2
+      - name: Install Dependencies
+        run:
+          yarn install

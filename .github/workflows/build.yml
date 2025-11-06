@@ -3,11 +3,10 @@ name: Typescript-build
 on: [push, pull_request]
 
 jobs:
-  install-deps:
-    uses: ./.github/workflows/install-deps.yml
-
+  # install-deps:
+  #   uses: ./.github/workflows/install-deps.yml
   build:
-    needs: install-deps
+    # needs: install-deps
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,9 +15,17 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: ./.github/actions/install-deps.yml
+        with:
+          node-version: 20
+          yarn-version: 4.2.2
       - name: Build
-
+      
         run: |
-          ls node_modules
+          
           yarn --version
           yarn build
