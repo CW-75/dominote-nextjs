@@ -4,15 +4,7 @@ on: [push, pull_request]
 
 jobs:
   install-deps:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Dependencies
-        uses: ./.github/workflows/install-deps.yml
-      - name: Upload node_modules
-        uses: actions/upload-artifact@v4
-        with:
-          name: upload-node-modules
-          path: node_modules
+    uses: ./.github/workflows/install-deps.yml
 
   build:
     needs: install-deps
@@ -30,5 +22,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: upload-node-modules
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: yarn build
