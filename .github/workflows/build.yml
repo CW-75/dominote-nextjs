@@ -19,6 +19,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - run: ./.github/workflows/install-deps.yml
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: download node_modules
         uses: actions/download-artifact@v4
         with:
