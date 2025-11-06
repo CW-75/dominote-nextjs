@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   install-deps:
-    uses: decentralfi/thordex-sdk/.github/workflows/install-deps.yml
+    uses: ./.github/workflows/install-deps.yml
   build:
     needs: install-deps
     runs-on: ubuntu-latest
