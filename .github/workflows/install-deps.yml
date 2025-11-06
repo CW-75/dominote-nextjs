@@ -29,3 +29,6 @@ jobs:
       - name: Install Dependencies
         run: |
           yarn install
+          ls node_modules
+      
+    
