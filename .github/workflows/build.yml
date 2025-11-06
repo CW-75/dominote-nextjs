@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - run: ./.github/workflows/install-deps.yml
+      - uses: ./.github/workflows/install-deps.yml
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: download node_modules
