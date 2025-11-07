@@ -5,9 +5,6 @@ on: [push, pull_request]
 jobs:
   install-deps:
     uses: ./.github/workflows/install-deps.yml
-    secrets: 
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
     
   build:
     needs: install-deps
