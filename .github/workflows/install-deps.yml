@@ -24,7 +24,7 @@ jobs:
       - run: |
           yarn set version 4.2.2
       - name: Install Dependencies
-        run:
+        run: |
           yarn install
           yarn build
       
